@@ -1,0 +1,87 @@
+
+
+  <mat-form-field class="divsearchbar">
+    <input style="" matInput type="text" placeholder="Pesquisar" [(ngModel)]="searchTerm" />
+    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+    </button>        <i style="position: absolute; right: 0; top: 3px" class="material-icons">search</i>
+
+  </mat-form-field>
+
+  <hr style="margin-bottom: 30px">
+  
+  <div *ngIf="(hoteis | hotelFilter: searchTerm).length === 0; else semDigitar"  class="text-center alignCenter divss" >
+    <div class="alert alert-primary" role="alert">
+      Nenhum resultado para o termo 
+      <span style="color:darkblue"> 
+        "{{searchTerm}}"
+      </span>
+        até o momento.
+    </div>
+  </div>
+
+  <div *ngIf="searchTerm == '' || searchTerm == null" class="text-center alignCenter divss" #semDigitar>
+    <div class="alert alert-primary" role="alert">
+          Você ainda não realizou nenhuma busca.
+    </div>
+  </div>
+  
+  
+
+  <div class="listaHoteis" *ngIf="!searchTerm=='' || !searchTerm==null">
+    <mat-accordion >
+      <mat-expansion-panel  *ngFor="let tableRow of hoteis | hotelFilter: searchTerm">
+        <mat-expansion-panel-header>
+          <div class="dividers"><span>{{tableRow.nome}}</span></div><div class="dividers2"><span style="">Ver mais detalhes</span></div>
+        </mat-expansion-panel-header>
+        {{tableRow.descricao}} <br> 
+        <hr>
+        <button class="btn btn-primary" (click)="open(content, tableRow)">Ver Mais</button>
+        </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  
+  
+  
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Detalhes do {{selectedRow.nome}}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <ul>
+        <li class="detailHotel">
+          <i class="material-icons">done</i>
+          <span>
+            {{selectedRow.descricao}}
+          </span>
+        </li>
+        <li class="detailHotel">
+          <i class="material-icons">done</i>
+          <span>
+            Localizado no {{selectedRow.localizacao}}.
+          </span>
+        </li>
+        <li class="detailHotel">
+          <i class="material-icons">done</i>
+          <span>
+            Diárias a partir de {{selectedRow.diaria}}.
+          </span>
+        </li>
+      </ul>
+    </div>
+  
+  <hr style="padding: 10px 0">
+  
+  <div style="float: right; padding: 20px 10px;">
+    <div class="buttonsdiv">  
+      <input class="btn btn-primary" style="margin-right: 4px" type="button" (click)="modal.dismiss('Cross click')" value="Ok" />
+      <input class="btn btn-outline-primary" type="button" (click)="modal.dismiss('Cross click')" value="Fechar" />
+    </div>
+  
+  </div>
+  </ng-template>
+
+  

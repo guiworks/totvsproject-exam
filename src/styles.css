@@ -1,1 +1,101 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.css';
+@import '~material-design-icons/iconfont/material-icons.css';
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.searchbar{
+  width: 40% !important;
+}
+
+input#mat-input-0 {
+  padding-right: 24px;
+}
+
+
+.mat-form-field {
+  display: block !important;
+  position: relative !important;
+  text-align: left !important;
+  width: 20% !important;
+  margin: 0 auto !important;
+  display: inline-block;
+  padding-right: 10px;
+
+}
+
+.dividers{
+  width: 60%;
+}
+.dividers2{
+  width: 40%;
+  text-align: right;
+  padding-right: 5px;
+  font-size: 12px;
+  padding-top: 5px;
+}
+
+
+@media only screen and (max-width: 800px){
+  .searchbar{
+    width: 100%;
+    padding: 0 30px;
+  }
+}
+
+/* modal animation */
+.modal-content{
+  animation-name: example;
+  animation-duration: 0.3s;
+}
+
+@keyframes example {
+  0%   {transform: scale(0.5)}
+  75%  {transform: scale(1.1)}
+  100% {transform: scale(1)}
+}
+
+.buttonsdiv {
+  padding: 8px 0;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 52px;
+  align-items: center;
+  margin-bottom: -24px;
+  float: right;
+}
+
+i.material-icons {
+  vertical-align: middle;
+}
+
+
+.btn, .btn-primary{
+  text-transform: uppercase;
+  font-size: 14px;
+  font-family: 'Poppins';
+
+}
+
+li {
+  list-style-type: none;
+}
+
+.alert-primary {
+  color: #004085;
+  background-color: #fff;
+  border-color: #b8daff;
+  box-shadow: 1px 1px 1px #b8daff;
+}
+
+.divss{
+  width: 300px; margin: 0 auto;
+}
+
+
+.listaHoteis{
+  width: 30%;
+  margin: 0 auto;
+}
